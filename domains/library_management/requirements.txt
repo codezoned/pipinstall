@@ -1,0 +1,8 @@
+twine
+pytest
+mock
+coverage
+check-manifest
+tox
+travis
+cookiecutter

@@ -1,0 +1,10 @@
+pillow
+opencv-python
+simplecv
+scikit-image
+twisted
+pyglet
+moviepy
+pprocess
+mahotas
+converter

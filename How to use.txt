@@ -1,0 +1,7 @@
+clone the project
+go to the required directory
+open powershell from the directory
+copy text from run-command.txt
+paste in powershell
+press enter
+It'll install all the libraries in requirements.txt
