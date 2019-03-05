@@ -1,0 +1,8 @@
+pynacl
+libnacl
+gnupg
+pycrypt
+pyca
+cryptography
+passlib
+

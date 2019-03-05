@@ -1,0 +1,4 @@
+pygtk
+pyqt5
+wxpython
+ipython

@@ -1,0 +1,10 @@
+asyncoro
+diesel
+gevent
+twistedMatrix
+rpyc
+pyro
+httpLib2
+celery
+pulsar
+napalm
