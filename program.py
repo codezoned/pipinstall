@@ -14,10 +14,10 @@ system_platform = str.lower(platform.system())
 path = os.getcwd()
 if system_platform == 'windows':
 	path = path + "\\" + 'domains' + "\\"
-	print(path)
+	# print(path)
 else:
 	path = path + '/' + 'domains' + "/"
-	print(path)
+	# print(path)
 
 #Function definations:-
 
@@ -40,11 +40,11 @@ def check_args(args = None):
 
 	return parser.parse_args(args)
 
-#run the script
+#Main function
 def Main():
 
 	clear_screen()
-	print('Welcome to pipinstall')
+	print("Welcome to pipinstall! A humble try to make our lives easier :')")
 
 	if check_args(sys.argv[1:]).domain_name:
 		required_domain = check_args(sys.argv[1:]).domain_name
