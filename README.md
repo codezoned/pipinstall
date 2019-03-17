@@ -32,7 +32,7 @@ open command line/powershell/terminal at that directory
 
 run:
 
-    python program.py domain_name
+    python pipinstall.py domain_name
 
     *domain_name must be one of the above mentioned domains*
 
