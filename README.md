@@ -1,47 +1,66 @@
 # pipinstall
 
-A python library that downloads all required python libraries in any domain specified. 
+pipinstall is a python shell script to quickly download dependencies in domains of computer science. Now we don't have to download libraries one by one or write a requirements.txt file!
 
-We don't have to install the required libraries one by one now.
+### How to run:
 
-
-
-### Domains available:
-
-1. cryptography
-
-2. games
-
-3. gui
-
-4. img_n_vid
-
-5. library_management
-
-6. ml
-
-7. networking
-
-8. web_dev
-
-### Run command
-
-Go to pipinstall directory
+Go to the cloned directory
 
 open command line/powershell/terminal at that directory 
 
-run:
+***Run:***
 
-    python pipinstall.py domain_name
+```python
+python program.py domain_name
+```
 
-    *domain_name must be one of the above mentioned domains*
+The domains must be one of the following:
 
-   
+| *Domain Names* | *Descriptions*                                              |
+| -------------- | ----------------------------------------------------------- |
+| all            | Download all the libraries in the dependency.               |
+| cryptography   | The safest encryption and cryptography libraries.           |
+| games          | Make some games ;)                                          |
+| gui            | Build beautiful Graphical User Interfaces.                  |
+| img-vid        | Manipulate Images and videos with all the libraries around. |
+| lib-manage     | Libraries to manage other libraries.                        |
+| ml             | All the machine learning libraries you'll ever need.        |
+| networking     | Connect and get connected all around :D                     |
+| web-dev        | Build and run websites, both front and back xD              |
 
-~~**pip install pipinstall**~~
+### Installation
 
-~~This command will install the library to the machine.~~
+1. Clone the repository:
 
-~~**pipinstall domain_name**~~
+   Clone using GitHub Desktop, 
 
-~~This command will install all the libraries in the domain to the machine.~~
+   OR
+
+   With Git:-
+
+   ```
+   $git clone https://github.com/codezoned/pipinstall.git
+   $cd pipinstall
+   ```
+
+2. Go to the cloned directory and open Terminal/Powershell/CMD at that location
+
+
+3. Run the pipinstall.py script
+
+
+   ```
+   python pipinstall.py domain_name
+   ```
+
+4. You're done. But if you want an easier access, 
+
+   Set this repository as an environment variable and run:
+
+   ```
+   pipinstall.py domain_name
+   ```
+
+
+
+

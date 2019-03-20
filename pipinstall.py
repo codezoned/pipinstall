@@ -1,87 +1,63 @@
-#import module from script
-import subprocess
+# import module from script
 import sys
 import os
-import argparse 
+import subprocess
+import argparse
 import platform
 
-#Global Variables required
 
-#os platform (windows, linus, etc)
-system_platform = str.lower(platform.system())
+# locate the project folder
+# path will be used as global
+pathname = os.path.dirname(sys.argv[0])
+abs_path = os.path.abspath(pathname)
+path = os.path.join(os.path.normpath(abs_path), 'domains')
 
-#current working directory
-path = os.getcwd()
-if system_platform == 'windows':
-	path = path + "\\" + 'domains' + "\\"
-	# print(path)
-else:
-	path = path + '/' + 'domains' + "/"
-	# print(path)
 
-#Function definations:-
+# Function definations:-
 
-#Clear the terminal
+# Clear the terminal
 def clear_screen():
-	if system_platform =='windows':
-		os.system('cls')
-	else:
-		os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+# end of clear_screen
 
-#check for command line arguments
-def check_args(args = None):
-	if args == None:
-		print("Please enter the required arguments!")
 
-	parser = argparse.ArgumentParser(description= "pipinstall: a library to download multiple libraries in different domains at once.")
-	parser.add_argument("domain_name", 
-		help= "Domain name",
-		type = str)
+# check for command line arguments
+def check_args(args=None):
+    if args == None:
+        print("Please enter the required arguments!")
 
-	return parser.parse_args(args)
+    parser = argparse.ArgumentParser(
+        description="pipinstall: a library to download multiple libraries in different domains at once.")
+    parser.add_argument("domain_name",
+                        help="Domain name",
+                        type=str)
 
-#Main function
+    return parser.parse_args(args)
+# end of check_args
+
+
+# Main function
 def Main():
 
-	clear_screen()
-	print("Welcome to pipinstall! A humble try to make our lives easier :')")
+    clear_screen()
+    print("Welcome to pipinstall! A humble try to make our lives easier :')")
 
-	if check_args(sys.argv[1:]).domain_name:
-		required_domain = check_args(sys.argv[1:]).domain_name
+    if check_args(sys.argv[1:]).domain_name:
+        required_domain = check_args(sys.argv[1:]).domain_name
 
-		global path, system_platform
-		if system_platform == 'windows':
-			backslash = '\ '
-			backslash = backslash.strip(backslash)
-			path = path + backslash + required_domain + backslash
+        global path
+        path = os.path.join(path, required_domain)
+        print(path)
+        os.chdir(path)
+        print(os.getcwd())
 
-			try:
-				os.chdir(path)
+        subprocess.call([sys.executable, "-m", "pip",
+                         "install", "-U", "-r", "requirements.txt"])
 
-				#run the command :- install all packages in requirements.txt
-				#-U specifies upgrade packages if a package is already installed	
-				subprocess.call([sys.executable, "-m", "pip", "install", "-U", "-r", "requirements.txt"])
-			except OSError:
-				print('No domain found. Please try again.')
-			
-		else:
-			path = path + '/' + required_domain + '/'
-			
-			try:
-				os.chdir(path)
 
-				#run the command :- install all packages in requirements.txt
-				#-U specifies upgrade packages if a package is already installed	
-				subprocess.call([sys.executable, "-m", "pip", "install", "-U", "-r", "requirements.txt"])
-			except OSError:
-				print('No domain found. Please try again.')
-
-		# #to check for files in cwd	
-		# print(path)
-		# files = [f for f in os.listdir('.') if os.path.isfile(f)]
-		# for f in files:
-		# 	print(f + "\n")
-
+# call Main
 if __name__ == '__main__':
-	Main()
-	# os.system('setx /M path "%path%;"+path')
+    Main()
