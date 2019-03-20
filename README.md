@@ -45,13 +45,15 @@ The domains must be one of the following:
 
 2. Go to the cloned directory and open Terminal/Powershell/CMD at that location
 
+
 3. Run the pipinstall.py script
+
 
    ```
    python pipinstall.py domain_name
    ```
 
-4. Boom! You're done. But if you want an easier access, 
+4. You're done. But if you want an easier access, 
 
    Set this repository as an environment variable and run:
 
@@ -59,6 +61,6 @@ The domains must be one of the following:
    pipinstall.py domain_name
    ```
 
-    And you're all set.
 
-Have a great time! :D
+
+
