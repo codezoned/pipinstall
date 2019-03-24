@@ -11,7 +11,7 @@ open command line/powershell/terminal at that directory
 ***Run:***
 
 ```python
-python program.py domain_name
+python pipinstall.py domain_name
 ```
 
 The domains must be one of the following:
