@@ -3,14 +3,21 @@ import sys
 import os
 import subprocess
 import argparse
-import platform
+#from pathlib import Path
 
 
 # locate the project folder
 # path will be used as global
-pathname = os.path.dirname(sys.argv[0])
-abs_path = os.path.abspath(pathname)
-path = os.path.join(os.path.normpath(abs_path), 'domains')
+#p = Path(__file__).parents[1]
+# pathname = os.path.dirname(sys.argv[0])
+# abs_path = os.path.abspath(pathname)
+# path = os.path.join(os.path.normpath(abs_path), 'domains')
+abs_path = os.path.abspath(__file__)
+fileDir = os.path.dirname(abs_path)
+print(fileDir)
+parentDir = os.path.dirname(fileDir)
+path = os.path.join(parentDir, 'Domains')
+print(path)
 
 
 # Function definations:-
@@ -23,8 +30,9 @@ def clear_screen():
         os.system('clear')
 # end of clear_screen
 
-
 # check for command line arguments
+
+
 def check_args(args=None):
     if args == None:
         print("Please enter the required arguments!")
@@ -38,8 +46,9 @@ def check_args(args=None):
     return parser.parse_args(args)
 # end of check_args
 
-
 # Main function
+
+
 def Main():
 
     clear_screen()
@@ -54,10 +63,10 @@ def Main():
         os.chdir(path)
         print(os.getcwd())
 
-        subprocess.call([sys.executable, "-m", "pip",
-                         "install", "-U", "-r", "requirements.txt"])
+        subprocess.call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
 
 
 # call Main
 if __name__ == '__main__':
     Main()
+
