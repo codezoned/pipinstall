@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
 
+#Adding .exe files, build and dist folders.
+!NuGet.exe
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -13,9 +16,9 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+#build/
 develop-eggs/
-dist/
+#dist/
 downloads/
 eggs/
 .eggs/
@@ -122,5 +125,7 @@ dmypy.json
 
 ### Python Patch ###
 .venv/
+
+
 
 # End of https://www.gitignore.io/api/python
