@@ -5,21 +5,6 @@ import subprocess
 import argparse
 #from pathlib import Path
 
-
-# locate the project folder
-# path will be used as global
-#p = Path(__file__).parents[1]
-# pathname = os.path.dirname(sys.argv[0])
-# abs_path = os.path.abspath(pathname)
-# path = os.path.join(os.path.normpath(abs_path), 'domains')
-abs_path = os.path.abspath(__file__)
-fileDir = os.path.dirname(abs_path)
-print(fileDir)
-parentDir = os.path.dirname(fileDir)
-path = os.path.join(parentDir, 'Domains')
-print(path)
-
-
 # Function definations:-
 
 # Clear the terminal
@@ -30,9 +15,17 @@ def clear_screen():
         os.system('clear')
 # end of clear_screen
 
+#Path to domains folder
+def domainPath():
+
+    abs_path = os.path.abspath(__file__)
+    fileDir = os.path.dirname(abs_path)
+    path = os.path.join(fileDir, 'Domains')
+    print(path)
+    return path
+#end of domainPath
+
 # check for command line arguments
-
-
 def check_args(args=None):
     if args == None:
         print("Please enter the required arguments!")
@@ -46,9 +39,15 @@ def check_args(args=None):
     return parser.parse_args(args)
 # end of check_args
 
+#install function
+def install_dom(dpath):
+    os.chdir(dpath)
+    os.getcwd()
+    #subprocess call to install libraries
+    subprocess.call([sys.executable, "-m", "pip", "install", "-U", "-r", "requirements.txt"])
+
+
 # Main function
-
-
 def Main():
 
     clear_screen()
@@ -57,13 +56,16 @@ def Main():
     if check_args(sys.argv[1:]).domain_name:
         required_domain = check_args(sys.argv[1:]).domain_name
 
-        global path
-        path = os.path.join(path, required_domain)
-        print(path)
-        os.chdir(path)
-        print(os.getcwd())
-
-        subprocess.call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        dpath = domainPath()
+        dpath = os.path.join(dpath, required_domain)
+        if os.path.isdir(dpath):
+            install_dom(dpath)
+        else:
+            while not os.path.isdir(dpath):
+                domain_name = str(input('Domain Name does not exist.\nPlease re-enter the domain name:'))
+                dpath = os.path.join(dpath, domain_name)
+                if os.path.isdir(dpath):
+                    install_dom(dpath)
 
 
 # call Main
