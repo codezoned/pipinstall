@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
  
 setuptools.setup(
     #Module name
-    name="ppipinstall",
+    name="pipinstall",
  
     #Module version
     version="0.0.1",
